@@ -67,11 +67,11 @@
       { title: "Tercer Semestre", color: "#e6dcf4" },
       { title: "Cuarto Semestre", color: "#e4e4fa" },
       { title: "Segundo Verano", color: "#e6dcf4" },
-      { title: "Quinto Semestre", color: "#dcf5f2" },
-      { title: "Sexto Semestre", color: "#fef1c7" },
-      { title: "Tercer Verano", color: "#d7eafc" },
-      { title: "Séptimo Semestre", color: "#ffe9d6" },
-      { title: "Octavo Semestre", color: "#ececec" }
+      { title: "Quinto Semestre", color: "#e6dcf4" },
+      { title: "Sexto Semestre", color: "#e6dcf4" },
+      { title: "Tercer Verano", color: "#e6dcf4" },
+      { title: "Séptimo Semestre", color: "#e6dcf4" },
+      { title: "Octavo Semestre", color: "#e6dcf4" }
     ];
 
     const courses = [
