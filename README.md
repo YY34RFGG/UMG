@@ -62,7 +62,7 @@
   <script>
     const semesters = [
       { title: "Primer Semestre", color: "#e6dcf4" },
-      { title: "Segundo Semestre", color: "#fdeacc" },
+      { title: "Segundo Semestre", color: "#e6dcf4" },
       { title: "Primer Verano", color: "#d5f4e6" },
       { title: "Tercer Semestre", color: "#ffe0e9" },
       { title: "Cuarto Semestre", color: "#e4e4fa" },
