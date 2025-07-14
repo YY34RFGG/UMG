@@ -63,10 +63,10 @@
     const semesters = [
       { title: "Primer Semestre", color: "#e6dcf4" },
       { title: "Segundo Semestre", color: "#e6dcf4" },
-      { title: "Primer Verano", color: "#d5f4e6" },
-      { title: "Tercer Semestre", color: "#ffe0e9" },
+      { title: "Primer Verano", color: "#e6dcf4" },
+      { title: "Tercer Semestre", color: "#e6dcf4" },
       { title: "Cuarto Semestre", color: "#e4e4fa" },
-      { title: "Segundo Verano", color: "#f9d5ec" },
+      { title: "Segundo Verano", color: "#e6dcf4" },
       { title: "Quinto Semestre", color: "#dcf5f2" },
       { title: "Sexto Semestre", color: "#fef1c7" },
       { title: "Tercer Verano", color: "#d7eafc" },
