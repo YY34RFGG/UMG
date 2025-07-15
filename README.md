@@ -5,48 +5,6 @@
   <title>UMG</title>
   <style>
 
-          margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      text-align: center;
-    }
-
-    .barra-superior {
-      background-color: #6a0dad; /* Morado */
-      color: white;
-      padding: 20px;
-    }
-
-    .barra-superior h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    .contenido {
-      margin-top: 40px;
-    }
-
-    .boton-link {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #6a0dad;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: background-color 0.3s;
-    }
-
-    .boton-link:hover {
-      background-color: #4b098d;
-    }
-    body{
-      font-family: sans-serif;
-      background: #f8f0fb;
-      padding: 20px;
-    }
-
     h1 {
       text-align: center;
       color: #5e2a84;
@@ -89,16 +47,7 @@
       text-decoration: line-through;
       opacity: 0.6;
     }
-      <div class="barra-superior">
-    <h1>Urgencias Médicas - Matrícula</h1>
-  </div>
 
-  <div class="contenido">
-    <p>Haz clic en el botón de abajo para ir al sitio de matrícula:</p>
-    <a class="boton-link" href="https://sites.google.com/udelas.ac.pa/urgencias-medicas-y-desastres/matricula?authuser=0" target="_blank">
-      Ir a la Página de Matrícula
-    </a>
-  </div>
   </style>
 </head>
 <body>
