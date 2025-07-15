@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>UMG</title>
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3081/3081559.png"/>
   <style>
     body {
       font-family: sans-serif;
@@ -48,30 +50,56 @@
     }
 
     .card.completed {
-      background-color: #d6d6d6;
+      background-color: #c8e6c9;
       text-decoration: line-through;
-      opacity: 0.6;
+      opacity: 1;
+    }
+
+    .intro, .link {
+      max-width: 800px;
+      margin: 10px auto;
+      padding: 15px;
+      background: #e6dbf3;
+      border-left: 5px solid #9c4dcc;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .link a {
+      text-decoration: none;
+      color: #4a148c;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>Malla Curricular Interactiva – Urgencias Médicas y desastres </h1>
-  <p style="text-align:center;">Haz clic en una materia para completarla. Se desbloquearán automáticamente las siguientes si cumples los prerrequisitos. Puedes volver a hacer clic para pruebas.</p>
+  <h1>Malla Curricular Interactiva – Urgencias Médicas y Desastres</h1>
+
+  <div class="intro">
+    Haz clic en una materia para marcarla como completada. Solo se desbloquean las materias si cumples con sus prerrequisitos.
+  </div>
+
+  <div class="link">
+    🔗 <a href="https://sites.google.com/udelas.ac.pa/urgencias-medicas-y-desastres/matricula?authuser=0" target="_blank">
+      Página oficial de matrícula
+    </a>
+  </div>
+
   <div id="container"></div>
 
   <script>
     const semesters = [
       { title: "Primer Semestre", color: "#e6dcf4" },
-      { title: "Segundo Semestre", color: "#fdeacc" },
-      { title: "Primer Verano", color: "#d5f4e6" },
-      { title: "Tercer Semestre", color: "#ffe0e9" },
-      { title: "Cuarto Semestre", color: "#e4e4fa" },
-      { title: "Segundo Verano", color: "#f9d5ec" },
-      { title: "Quinto Semestre", color: "#dcf5f2" },
-      { title: "Sexto Semestre", color: "#fef1c7" },
-      { title: "Tercer Verano", color: "#d7eafc" },
-      { title: "Séptimo Semestre", color: "#ffe9d6" },
-      { title: "Octavo Semestre", color: "#ececec" }
+      { title: "Segundo Semestre", color: "#e6dcf4" },
+      { title: "Primer Verano", color: "#e6dcf4" },
+      { title: "Tercer Semestre", color: "#e6dcf4" },
+      { title: "Cuarto Semestre", color: "#e6dcf4" },
+      { title: "Segundo Verano", color: "#e6dcf4" },
+      { title: "Quinto Semestre", color: "#e6dcf4" },
+      { title: "Sexto Semestre", color: "#e6dcf4" },
+      { title: "Tercer Verano", color: "#e6dcf4" },
+      { title: "Séptimo Semestre", color: "#e6dcf4" },
+      { title: "Octavo Semestre", color: "#e6dcf4" }
     ];
 
     const courses = [
@@ -82,7 +110,7 @@
       ["7018", "Semiología Médica", 3, [], 0],
       ["4761", "Inglés 448A", 4, [], 0],
       ["7019", "Práctica Universitaria I", 3, [], 0],
-      ["1", "Taller", 0, [], 0],
+      ["1", "Taller", 1, [], 0],
       ["2707", "Anatomía Humana II (Lab.)", 3, ["2700"], 1],
       ["7021", "Fisiología Humana II (Lab.)", 3, ["7016"], 1],
       ["7022", "Manejo de Vías Aéreas Básico", 3, ["2700", "7016"], 1],
@@ -173,6 +201,7 @@
 
     function toggleComplete(code) {
       const card = courseMap[code].element;
+      if (!card.classList.contains("highlight") && !card.classList.contains("completed")) return;
       card.classList.toggle("completed");
       updateHighlights();
     }
@@ -181,7 +210,6 @@
       Object.entries(courseMap).forEach(([code, { prereq, element }]) => {
         if (element.classList.contains("completed")) {
           element.classList.remove("highlight");
-          element.style.opacity = 0.6;
           return;
         }
         const unlocked = prereq.every(p => courseMap[p]?.element.classList.contains("completed"));
@@ -194,4 +222,3 @@
   </script>
 </body>
 </html>
- 
