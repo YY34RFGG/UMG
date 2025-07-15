@@ -4,7 +4,44 @@
   <meta charset="UTF-8">
   <title>UMG</title>
   <style>
-    body {
+
+          margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    .barra-superior {
+      background-color: #6a0dad; /* Morado */
+      color: white;
+      padding: 20px;
+    }
+
+    .barra-superior h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .contenido {
+      margin-top: 40px;
+    }
+
+    .boton-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #6a0dad;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .boton-link:hover {
+      background-color: #4b098d;
+    }
+    body{
       font-family: sans-serif;
       background: #f8f0fb;
       padding: 20px;
