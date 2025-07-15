@@ -52,6 +52,16 @@
       text-decoration: line-through;
       opacity: 0.6;
     }
+      <div class="barra-superior">
+    <h1>Urgencias Médicas - Matrícula</h1>
+  </div>
+
+  <div class="contenido">
+    <p>Haz clic en el botón de abajo para ir al sitio de matrícula:</p>
+    <a class="boton-link" href="https://sites.google.com/udelas.ac.pa/urgencias-medicas-y-desastres/matricula?authuser=0" target="_blank">
+      Ir a la Página de Matrícula
+    </a>
+  </div>
   </style>
 </head>
 <body>
