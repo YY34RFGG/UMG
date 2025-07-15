@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>UMG</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f8f0fb;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #5e2a84;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      padding: 10px;
+      background: #5e2a84;
+      color: white;
+      border-radius: 6px;
+      margin-top: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .card {
+      position: relative;
+      border-radius: 8px;
+      padding: 15px;
+      background-color: white;
+      border: 2px solid #ccc;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      opacity: 0.4;
+    }
+
+    .card.highlight {
+      border-color: #5e2a84;
+      opacity: 1;
+      background-color: #e5d6f1;
+    }
+
+    .card.completed {
+      background-color: #d1f3d1;
+      text-decoration: line-through;
+      opacity: 1;
+    }
+
+    .nota-label {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-weight: bold;
+      color: #5e2a84;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular Interactiva – Urgencias Médicas y Desastres</h1>
+  <p style="text-align:center;">Haz clic en una materia para completarla e ingresar tu nota. Puedes hacer clic nuevamente para editarla.</p>
+  <div id="container"></div>
+
+  <script>
+    const semesters = [
+      { title: "Primer Semestre", color: "#e6dcf4" },
+      { title: "Segundo Semestre", color: "#fdeacc" },
+      { title: "Primer Verano", color: "#d5f4e6" },
+      { title: "Tercer Semestre", color: "#ffe0e9" },
+      { title: "Cuarto Semestre", color: "#e4e4fa" },
+      { title: "Segundo Verano", color: "#f9d5ec" },
+      { title: "Quinto Semestre", color: "#dcf5f2" },
+      { title: "Sexto Semestre", color: "#fef1c7" },
+      { title: "Tercer Verano", color: "#d7eafc" },
+      { title: "Séptimo Semestre", color: "#ffe9d6" },
+      { title: "Octavo Semestre", color: "#ececec" }
+    ];
+
+    const courses = [
+      ["2700", "Anatomía Humana I (Lab.)", 3, [], 0],
+      ["7016", "Fisiología Humana I (Lab.)", 3, [], 0],
+      ["2721", "Bioquímica (Lab.)", 3, [], 0],
+      ["7017", "Transporte Prehospitalario", 3, [], 0],
+      ["7018", "Semiología Médica", 3, [], 0],
+      ["4761", "Inglés 448A", 4, [], 0],
+      ["7019", "Práctica Universitaria I", 3, [], 0],
+      ["1", "Taller", 1, [], 0],
+      // Continúa con el resto de cursos...
+    ];
+
+    const container = document.getElementById("container");
+    const courseMap = {};
+
+    semesters.forEach((sem, i) => {
+      const section = document.createElement("section");
+      const title = document.createElement("h2");
+      title.textContent = sem.title;
+      section.appendChild(title);
+
+      const grid = document.createElement("div");
+      grid.className = "grid";
+      grid.style.backgroundColor = sem.color;
+      grid.style.padding = "10px";
+      grid.style.borderRadius = "8px";
+
+      courses.filter(c => c[4] === i).forEach(([code, name, credits, prereq]) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.id = code;
+        card.innerHTML = `
+          <strong>${name}</strong><br>
+          <small>${code} • ${credits} créditos</small>
+          <div class="nota-label" id="nota-${code}"></div>`;
+        card.onclick = () => toggleComplete(code);
+        courseMap[code] = { prereq, element: card };
+        grid.appendChild(card);
+      });
+
+      section.appendChild(grid);
+      container.appendChild(section);
+    });
+
+    function toggleComplete(code) {
+      const card = courseMap[code].element;
+      const notaDiv = document.getElementById(`nota-${code}`);
+
+      if (!card.classList.contains("completed")) {
+        const nota = prompt("Ingresa la nota obtenida:");
+        if (nota !== null && nota.trim() !== "") {
+          card.classList.add("completed");
+          notaDiv.textContent = nota.trim();
+        }
+      } else {
+        const nuevaNota = prompt("Editar nota:");
+        if (nuevaNota !== null && nuevaNota.trim() !== "") {
+          notaDiv.textContent = nuevaNota.trim();
+        }
+      }
+
+      updateHighlights();
+    }
+
+    function updateHighlights() {
+      Object.entries(courseMap).forEach(([code, { prereq, element }]) => {
+        if (element.classList.contains("completed")) {
+          element.classList.remove("highlight");
+          element.style.opacity = 1;
+          return;
+        }
+        const unlocked = prereq.every(p => courseMap[p]?.element.classList.contains("completed"));
+        element.classList.toggle("highlight", unlocked);
+        element.style.opacity = unlocked ? 1 : 0.4;
+      });
+    }
+
+    updateHighlights();
+  </script>
+</body>
+</html>
